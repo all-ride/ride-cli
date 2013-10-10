@@ -3,7 +3,7 @@
 try {
     include_once __DIR__ . '/../vendor/autoload.php';
 
-    $system = new pallo\app\system\System();
+    $system = new pallo\application\system\System();
     $system->service('cli');
 
     exit(0);

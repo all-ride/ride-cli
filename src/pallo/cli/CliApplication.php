@@ -2,8 +2,8 @@
 
 namespace pallo\cli;
 
-use pallo\app\system\System;
-use pallo\app\App;
+use pallo\application\system\System;
+use pallo\application\Application;
 
 use pallo\library\cli\exception\CliException;
 use pallo\library\cli\output\Output;
@@ -12,7 +12,7 @@ use pallo\library\cli\Cli;
 /**
  * CLI application
  */
-class CliApp implements App {
+class CliApplication implements Application {
 
     /**
      * Instance of the CLI
