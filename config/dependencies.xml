@@ -56,5 +56,5 @@
         </call>
     </dependency>    
     
-    <dependency interface="pallo\app\App" class="pallo\cli\CliApp" id="cli" />
+    <dependency interface="pallo\application\Application" class="pallo\cli\CliApplication" id="cli" />
 </container>

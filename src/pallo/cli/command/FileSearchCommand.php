@@ -2,8 +2,6 @@
 
 namespace pallo\cli\command;
 
-use pallo\app\system\System;
-
 use pallo\library\cli\command\AbstractCommand;
 use pallo\library\system\file\browser\FileBrowser;
 
@@ -61,7 +59,7 @@ class FileSearchCommand extends AbstractCommand {
             $hasPublic = true;
         }
 
-        $files = $this->fileBrowser->getFiles(System::DIRECTORY_PUBLIC . '/' . $file);
+        $files = $this->fileBrowser->getFiles($this->fileBrowser->getPublicPath() . '/' . $file);
         if ($files) {
             foreach ($files as $f) {
                 $this->output->writeLine('- ' . $f);
