@@ -12,7 +12,7 @@ try {
         include_once $parameters;
     }
 
-    if (!isset($parameters)) {
+    if (!is_array($parameters)) {
         $parameters = null;
     }
 
