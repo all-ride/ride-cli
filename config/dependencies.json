@@ -1,0 +1,117 @@
+{
+    "dependencies": [
+        {
+            "interfaces": "pallo\\library\\cli\\command\\Command",
+            "class": "pallo\\cli\\command\\DependencySearchCommand", 
+            "id": "dependency"
+        },
+        {
+            "interfaces": "pallo\\library\\cli\\command\\Command", 
+            "class": "pallo\\cli\\command\\FileSearchCommand", 
+            "id": "file"
+        },
+        {
+            "interfaces": "pallo\\library\\cli\\command\\Command",
+            "class": "pallo\\cli\\command\\ParameterSearchCommand",
+            "id": "parameter",
+            "calls": ["setConfig", "setConfigHelper"]
+        },
+        {
+            "interfaces": "pallo\\library\\cli\\command\\Command",
+            "class": "pallo\\cli\\command\\ParameterGetCommand",
+            "id": "parameter.get",
+            "calls": ["setConfig", "setConfigHelper"]
+        },
+        {
+            "interfaces": "pallo\\library\\cli\\command\\Command",
+            "class": "pallo\\cli\\command\\ParameterSetCommand",
+            "id": "parameter.set",
+            "calls": ["setConfig", "setConfigHelper"]
+        },
+        {
+            "interfaces": "pallo\\library\\cli\\command\\Command",
+            "class": "pallo\\cli\\command\\ParameterUnsetCommand",
+            "id": "parameter.unset",
+            "calls": ["setConfig", "setConfigHelper"]
+        },
+        {
+            "class": "pallo\\library\\cli\\input\\ArgumentParser",
+            "id": "cli"
+        },
+        {
+            "interfaces": "pallo\\library\\cli\\input\\Input",
+            "class": "pallo\\library\\cli\\input\\ArgumentInput",
+            "id": "argument"
+        },
+        {
+            "interfaces": "pallo\\library\\cli\\input\\Input",
+            "class": "pallo\\library\\cli\\input\\PhpInput",
+            "id": "php"
+        },
+        {
+            "interfaces": "pallo\\library\\cli\\input\\Input",
+            "class": "pallo\\library\\cli\\input\\ReadlineInput",
+            "id": "readline"
+        },
+        {
+            "interfaces": "pallo\\library\\cli\\output\\Output",
+            "class": "pallo\\library\\cli\\output\\PhpOutput",
+            "id": "php"
+        },
+        {
+            "class": "pallo\\library\\cli\\Cli",
+            "id": "cli",
+            "calls": [
+                {
+                    "method": "setEnablePhpCommand",
+                    "arguments": [
+                        {
+                            "name": "enablePhpCommand",
+                            "type": "scalar",
+                            "properties": {
+                                "value": 1
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "interfaces": "pallo\\library\\log\\listener\\LogListener",
+            "class": "pallo\\library\\log\\listener\\EchoLogListener",
+            "id": "echo",
+            "calls": [
+                {
+                    "method": "setLevel",
+                    "arguments": [
+                        {
+                            "name": "level",
+                            "type": "parameter",
+                            "properties": {
+                                "key": "log.level"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "method": "setLogMessageDecorator",
+                    "arguments": [
+                        {
+                            "name": "logMessageDecorator",
+                            "type": "dependency",
+                            "properties": {
+                                "interface": "pallo\\library\\decorator\\Decorator",
+                                "id": "log.message"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "interfaces": "pallo\\application\\Application",
+            "class": "pallo\\cli\\CliApplication",
+            "id": "cli"
+        }
+    ]
+}
