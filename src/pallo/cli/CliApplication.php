@@ -138,7 +138,7 @@ class CliApplication implements Application {
                 $output->writeLine('Available options:');
                 $output->writeLine('- --batch  Use a non-interactive input.');
                 $output->writeLine('- --debug  Show the full stack trace of runtime exceptions.');
-                $output->writeLine('- --shell  Runs the console in a interactive shell.');
+                $output->writeLine('- --shell  Run as a (interactive) shell.');
                 $output->writeLine('');
                 $output->writeLine('If you are in a interactive shell, you can use tab for command auto completion and the up and down arrows for command history.');
                 $output->writeLine('');
