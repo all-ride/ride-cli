@@ -2,6 +2,26 @@
     "dependencies": [
         {
             "interfaces": "pallo\\library\\cli\\command\\Command",
+            "class": "pallo\\cli\\command\\CacheClearCommand", 
+            "id": "cache.clear"
+        },
+        {
+            "interfaces": "pallo\\library\\cli\\command\\Command",
+            "class": "pallo\\cli\\command\\CacheCommand", 
+            "id": "cache"
+        },
+        {
+            "interfaces": "pallo\\library\\cli\\command\\Command",
+            "class": "pallo\\cli\\command\\CacheDisableCommand", 
+            "id": "cache.disable"
+        },
+        {
+            "interfaces": "pallo\\library\\cli\\command\\Command",
+            "class": "pallo\\cli\\command\\CacheEnableCommand", 
+            "id": "cache.enable"
+        },
+        {
+            "interfaces": "pallo\\library\\cli\\command\\Command",
             "class": "pallo\\cli\\command\\DependencySearchCommand", 
             "id": "dependency"
         },
