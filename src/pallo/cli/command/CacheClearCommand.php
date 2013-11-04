@@ -33,7 +33,7 @@ class CacheClearCommand extends AbstractCommand {
      * @return null
      */
     public function execute() {
-        $name = $input->getArgument('name');
+        $name = $this->input->getArgument('name');
 
         if ($name) {
             $control = $this->dependencyInjector->get('pallo\\application\\cache\\control\\CacheControl', $name);
