@@ -25,20 +25,20 @@ try {
     exit(0);
 } catch (Exception $exception) {
     // error occured
-    $output = "Fatal error:\n\n" . get_class($exception) . ': ' . $exception->getMessage() . "\n";
     if ($isDebug !== false) {
+        $output = "Fatal error:\n\n" . get_class($exception) . ': ' . $exception->getMessage() . "\n";
         $output .= "\n" . $exception->getTraceAsString() . "\n";
-    }
 
-    do {
-        $exception = $exception->getPrevious();
-        if ($exception) {
-            $output .= "\nCaused by:\n\n" . get_class($exception) . ': ' . $exception->getMessage() . "\n";
-            if ($isDebug !== false) {
+        do {
+            $exception = $exception->getPrevious();
+            if ($exception) {
+                $output .= "\nCaused by:\n\n" . get_class($exception) . ': ' . $exception->getMessage() . "\n";
                 $output .= "\n" . $exception->getTraceAsString() . "\n";
             }
-        }
-    } while ($exception);
+        } while ($exception);
+    } else {
+        $output = "Fatal error: " . $exception->getMessage() . "\n";
+    }
 
     if (defined('STDERR')) {
         fwrite(STDERR, $output);
