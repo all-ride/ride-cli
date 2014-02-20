@@ -2,7 +2,7 @@
     "name": "pallo/cli",
     "description": "CLI for a Pallo application",
     "license": "MIT",
-    "version": "0.4.3",
+    "version": "0.4.4",
     "authors": [
         {
             "name": "Joris Vandeweerd",
