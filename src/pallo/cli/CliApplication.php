@@ -9,6 +9,8 @@ use pallo\library\cli\exception\CliException;
 use pallo\library\cli\output\Output;
 use pallo\library\cli\Cli;
 
+use \Exception;
+
 /**
  * CLI application
  */
