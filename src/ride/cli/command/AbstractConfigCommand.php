@@ -1,12 +1,12 @@
 <?php
 
-namespace pallo\cli\command;
+namespace ride\cli\command;
 
-use pallo\library\cli\command\AbstractCommand;
-use pallo\library\cli\exception\CliException;
-use pallo\library\cli\input\AutoCompletable;
-use pallo\library\config\Config;
-use pallo\library\config\ConfigHelper;
+use ride\library\cli\command\AbstractCommand;
+use ride\library\cli\exception\CliException;
+use ride\library\cli\input\AutoCompletable;
+use ride\library\config\Config;
+use ride\library\config\ConfigHelper;
 
 /**
  * Abstract configuration command which provides auto completion
@@ -15,19 +15,19 @@ abstract class AbstractConfigCommand extends AbstractCommand implements AutoComp
 
     /**
      * Instance of the config
-     * @var pallo\library\config\Config
+     * @var ride\library\config\Config
      */
     protected $config;
 
     /**
      * Instance of the config helper
-     * @var pallo\library\config\ConfigHelper
+     * @var ride\library\config\ConfigHelper
      */
     protected $configHelper;
 
     /**
      * Sets the instance of the config
-     * @param pallo\library\config\Config $config
+     * @param ride\library\config\Config $config
      * @return null
      */
     public function setConfig(Config $config) {
@@ -36,7 +36,7 @@ abstract class AbstractConfigCommand extends AbstractCommand implements AutoComp
 
     /**
      * Sets the instance of the config helper
-     * @param pallo\library\config\ConfigHelper $configHelper
+     * @param ride\library\config\ConfigHelper $configHelper
      * @return null
      */
     public function setConfigHelper(ConfigHelper $configHelper) {
@@ -74,7 +74,7 @@ abstract class AbstractConfigCommand extends AbstractCommand implements AutoComp
     /**
      * Checks if the instance of Config and ConfigHelper are set
      * @return null
-     * @throws pallo\library\cli\exception\CliException when the config or the
+     * @throws ride\library\cli\exception\CliException when the config or the
      * config helper are not set
      */
     protected function validateInstance() {

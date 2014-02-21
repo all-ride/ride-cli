@@ -1,6 +1,6 @@
 {
-    "name": "pallo/cli",
-    "description": "CLI for a Pallo application",
+    "name": "ride/cli",
+    "description": "CLI for a Ride application",
     "license": "MIT",
     "version": "0.4.4",
     "authors": [
@@ -10,15 +10,15 @@
         }
     ],
     "require": {
-        "pallo/app": ">=0.4.0",
-        "pallo/lib-cli": ">=0.1.0",
-        "pallo/lib-config": ">=0.2.0",
-        "pallo/lib-dependency": ">=0.3.0",
-        "pallo/lib-system": ">=0.2.1"
+        "ride/app": ">=0.4.0",
+        "ride/lib-cli": ">=0.1.0",
+        "ride/lib-config": ">=0.2.0",
+        "ride/lib-dependency": ">=0.3.0",
+        "ride/lib-system": ">=0.2.1"
     }, 
     "autoload": {
         "psr-0": {
-            "pallo\\cli\\": ["src/", "test/src/"]
+            "ride\\cli\\": ["src/", "test/src/"]
         }
     }
 }

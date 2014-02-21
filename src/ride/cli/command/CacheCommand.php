@@ -1,9 +1,9 @@
 <?php
 
-namespace pallo\cli\command;
+namespace ride\cli\command;
 
-use pallo\library\cli\command\AbstractCommand;
-use pallo\library\dependency\DependencyInjector;
+use ride\library\cli\command\AbstractCommand;
+use ride\library\dependency\DependencyInjector;
 
 /**
  * Command to get an overview of the caches
@@ -12,7 +12,7 @@ class CacheCommand extends AbstractCommand {
 
     /**
      * Instance of the dependency injector
-     * @var pallo\library\dependency\DependencyInjector
+     * @var ride\library\dependency\DependencyInjector
      */
     protected $dependencyInjector;
 
@@ -31,7 +31,7 @@ class CacheCommand extends AbstractCommand {
      * @return null
      */
     public function execute() {
-        $controls = $this->dependencyInjector->getAll('pallo\\application\\cache\\control\\CacheControl');
+        $controls = $this->dependencyInjector->getAll('ride\\application\\cache\\control\\CacheControl');
 
         ksort($controls);
 

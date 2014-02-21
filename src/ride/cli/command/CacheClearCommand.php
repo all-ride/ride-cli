@@ -1,9 +1,9 @@
 <?php
 
-namespace pallo\cli\command;
+namespace ride\cli\command;
 
-use pallo\library\cli\command\AbstractCommand;
-use pallo\library\dependency\DependencyInjector;
+use ride\library\cli\command\AbstractCommand;
+use ride\library\dependency\DependencyInjector;
 
 /**
  * Command to clear the cache
@@ -12,7 +12,7 @@ class CacheClearCommand extends AbstractCommand {
 
     /**
      * Instance of the dependency injector
-     * @var pallo\library\dependency\DependencyInjector
+     * @var ride\library\dependency\DependencyInjector
      */
     protected $dependencyInjector;
 
@@ -36,10 +36,10 @@ class CacheClearCommand extends AbstractCommand {
         $name = $this->input->getArgument('name');
 
         if ($name) {
-            $control = $this->dependencyInjector->get('pallo\\application\\cache\\control\\CacheControl', $name);
+            $control = $this->dependencyInjector->get('ride\\application\\cache\\control\\CacheControl', $name);
             $control->clear();
         } else {
-            $controls = $this->dependencyInjector->getAll('pallo\\application\\cache\\control\\CacheControl');
+            $controls = $this->dependencyInjector->getAll('ride\\application\\cache\\control\\CacheControl');
             foreach ($controls as $control) {
                 $control->clear();
             }
