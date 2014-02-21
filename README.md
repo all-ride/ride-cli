@@ -1,3 +1,3 @@
-# Pallo: CLI
+# Ride: CLI
 
-This module adds a CLI to your Pallo application.
+This module adds a CLI to your Ride application.
