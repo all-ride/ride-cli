@@ -19,7 +19,7 @@ try {
     }
 
     // service the cli
-    $system = new pallo\application\system\System($parameters);
+    $system = new ride\application\system\System($parameters);
     $system->service('cli');
 
     exit(0);

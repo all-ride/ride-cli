@@ -1,6 +1,6 @@
 <?php
 
-namespace pallo\cli\command;
+namespace ride\cli\command;
 
 /**
  * Command to get a configuration parameter

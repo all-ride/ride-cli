@@ -1,9 +1,9 @@
 <?php
 
-namespace pallo\cli\command;
+namespace ride\cli\command;
 
-use pallo\library\cli\command\AbstractCommand;
-use pallo\library\system\file\browser\FileBrowser;
+use ride\library\cli\command\AbstractCommand;
+use ride\library\system\file\browser\FileBrowser;
 
 /**
  * Command to search for files relative to the directory structure
@@ -12,13 +12,13 @@ class FileSearchCommand extends AbstractCommand {
 
     /**
      * Instance of the file browser
-     * @var pallo\library\system\file\browser\FileBrowser
+     * @var ride\library\system\file\browser\FileBrowser
      */
     protected $fileBrowser;
 
     /**
      * Constructs a new file search command
-     * @param pallo\library\system\file\browser\FileBrowser $fileBrowser
+     * @param ride\library\system\file\browser\FileBrowser $fileBrowser
      * @return null
      */
     public function __construct(FileBrowser $fileBrowser) {

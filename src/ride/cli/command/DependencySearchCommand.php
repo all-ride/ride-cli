@@ -1,9 +1,9 @@
 <?php
 
-namespace pallo\cli\command;
+namespace ride\cli\command;
 
-use pallo\library\cli\command\AbstractCommand;
-use pallo\library\dependency\DependencyInjector;
+use ride\library\cli\command\AbstractCommand;
+use ride\library\dependency\DependencyInjector;
 
 /**
  * Command to show an overview of the defined dependencies
@@ -12,7 +12,7 @@ class DependencySearchCommand extends AbstractCommand {
 
     /**
      * Instance of the dependency injector
-     * @var pallo\library\dependency\DependencyInjector
+     * @var ride\library\dependency\DependencyInjector
      */
     protected $dependencyInjector;
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace pallo\cli;
+namespace ride\cli;
 
-use pallo\application\system\System;
-use pallo\application\Application;
+use ride\application\system\System;
+use ride\application\Application;
 
-use pallo\library\cli\exception\CliException;
-use pallo\library\cli\output\Output;
-use pallo\library\cli\Cli;
+use ride\library\cli\exception\CliException;
+use ride\library\cli\output\Output;
+use ride\library\cli\Cli;
 
 use \Exception;
 
@@ -18,20 +18,20 @@ class CliApplication implements Application {
 
     /**
      * Instance of the CLI
-     * @var pallo\library\cli\Cli
+     * @var ride\library\cli\Cli
      */
     protected $cli;
 
     /**
      * Instance of the system
-     * @var pallo\app\system\System
+     * @var ride\app\system\System
      */
     protected $system;
 
     /**
      * Constructs a new CLI application
-     * @param pallo\app\system\System $system
-     * @param pallo\library\cli\Cli $cli
+     * @param ride\app\system\System $system
+     * @param ride\library\cli\Cli $cli
      * @return null
      */
     public function __construct(System $system, Cli $cli) {
@@ -54,7 +54,7 @@ class CliApplication implements Application {
         // load commands
         $commandContainer = $this->cli->getCommandInterpreter()->getCommandContainer();
 
-        $commands = $dependencyInjector->getAll('pallo\\library\\cli\\command\\Command');
+        $commands = $dependencyInjector->getAll('ride\\library\\cli\\command\\Command');
         foreach ($commands as $command) {
             $commandContainer->addCommand($command);
         }
@@ -76,20 +76,20 @@ class CliApplication implements Application {
             $this->cli->setIsDebug(true);
 
             // add echo log listener to the log
-            $echoLogListener = $dependencyInjector->get('pallo\\library\\log\\listener\\LogListener', 'echo');
+            $echoLogListener = $dependencyInjector->get('ride\\library\\log\\listener\\LogListener', 'echo');
 
-            $log = $dependencyInjector->get('pallo\\library\\log\\Log');
+            $log = $dependencyInjector->get('ride\\library\\log\\Log');
             $log->addLogListener($echoLogListener);
         }
 
         // set the input and output to the CLI
         try {
-            $input = $dependencyInjector->get('pallo\\library\\cli\\input\\Input', 'readline');
+            $input = $dependencyInjector->get('ride\\library\\cli\\input\\Input', 'readline');
         } catch (Exception $exception) {
-            $input = $dependencyInjector->get('pallo\\library\\cli\\input\\Input', 'php');
+            $input = $dependencyInjector->get('ride\\library\\cli\\input\\Input', 'php');
         }
 
-        $output = $dependencyInjector->get('pallo\\library\\cli\\output\\Output');
+        $output = $dependencyInjector->get('ride\\library\\cli\\output\\Output');
 
         $this->cli->setInput($input);
         $this->cli->setOutput($output);
@@ -114,7 +114,7 @@ class CliApplication implements Application {
 
             $output->writeLine('Type \'help\' to get you started.');
         } else {
-            $input = $dependencyInjector->get('pallo\\library\\cli\\input\\Input', 'argument');
+            $input = $dependencyInjector->get('ride\\library\\cli\\input\\Input', 'argument');
 
             // check for the batch flag
             if (in_array('--batch', $_SERVER['argv']) !== false) {
@@ -155,7 +155,7 @@ class CliApplication implements Application {
 
     /**
      * Writes the system name and environment to the provided output
-     * @param pallo\library\cli\output\Output $output
+     * @param ride\library\cli\output\Output $output
      * @return null
      */
     protected function writeSystemHeader(Output $output) {

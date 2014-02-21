@@ -1,85 +1,85 @@
 {
     "dependencies": [
         {
-            "interfaces": "pallo\\library\\cli\\command\\Command",
-            "class": "pallo\\cli\\command\\CacheClearCommand", 
+            "interfaces": "ride\\library\\cli\\command\\Command",
+            "class": "ride\\cli\\command\\CacheClearCommand", 
             "id": "cache.clear"
         },
         {
-            "interfaces": "pallo\\library\\cli\\command\\Command",
-            "class": "pallo\\cli\\command\\CacheCommand", 
+            "interfaces": "ride\\library\\cli\\command\\Command",
+            "class": "ride\\cli\\command\\CacheCommand", 
             "id": "cache"
         },
         {
-            "interfaces": "pallo\\library\\cli\\command\\Command",
-            "class": "pallo\\cli\\command\\CacheDisableCommand", 
+            "interfaces": "ride\\library\\cli\\command\\Command",
+            "class": "ride\\cli\\command\\CacheDisableCommand", 
             "id": "cache.disable"
         },
         {
-            "interfaces": "pallo\\library\\cli\\command\\Command",
-            "class": "pallo\\cli\\command\\CacheEnableCommand", 
+            "interfaces": "ride\\library\\cli\\command\\Command",
+            "class": "ride\\cli\\command\\CacheEnableCommand", 
             "id": "cache.enable"
         },
         {
-            "interfaces": "pallo\\library\\cli\\command\\Command",
-            "class": "pallo\\cli\\command\\DependencySearchCommand", 
+            "interfaces": "ride\\library\\cli\\command\\Command",
+            "class": "ride\\cli\\command\\DependencySearchCommand", 
             "id": "dependency"
         },
         {
-            "interfaces": "pallo\\library\\cli\\command\\Command", 
-            "class": "pallo\\cli\\command\\FileSearchCommand", 
+            "interfaces": "ride\\library\\cli\\command\\Command", 
+            "class": "ride\\cli\\command\\FileSearchCommand", 
             "id": "file"
         },
         {
-            "interfaces": "pallo\\library\\cli\\command\\Command",
-            "class": "pallo\\cli\\command\\ParameterSearchCommand",
+            "interfaces": "ride\\library\\cli\\command\\Command",
+            "class": "ride\\cli\\command\\ParameterSearchCommand",
             "id": "parameter",
             "calls": ["setConfig", "setConfigHelper"]
         },
         {
-            "interfaces": "pallo\\library\\cli\\command\\Command",
-            "class": "pallo\\cli\\command\\ParameterGetCommand",
+            "interfaces": "ride\\library\\cli\\command\\Command",
+            "class": "ride\\cli\\command\\ParameterGetCommand",
             "id": "parameter.get",
             "calls": ["setConfig", "setConfigHelper"]
         },
         {
-            "interfaces": "pallo\\library\\cli\\command\\Command",
-            "class": "pallo\\cli\\command\\ParameterSetCommand",
+            "interfaces": "ride\\library\\cli\\command\\Command",
+            "class": "ride\\cli\\command\\ParameterSetCommand",
             "id": "parameter.set",
             "calls": ["setConfig", "setConfigHelper"]
         },
         {
-            "interfaces": "pallo\\library\\cli\\command\\Command",
-            "class": "pallo\\cli\\command\\ParameterUnsetCommand",
+            "interfaces": "ride\\library\\cli\\command\\Command",
+            "class": "ride\\cli\\command\\ParameterUnsetCommand",
             "id": "parameter.unset",
             "calls": ["setConfig", "setConfigHelper"]
         },
         {
-            "class": "pallo\\library\\cli\\input\\ArgumentParser",
+            "class": "ride\\library\\cli\\input\\ArgumentParser",
             "id": "cli"
         },
         {
-            "interfaces": "pallo\\library\\cli\\input\\Input",
-            "class": "pallo\\library\\cli\\input\\ArgumentInput",
+            "interfaces": "ride\\library\\cli\\input\\Input",
+            "class": "ride\\library\\cli\\input\\ArgumentInput",
             "id": "argument"
         },
         {
-            "interfaces": "pallo\\library\\cli\\input\\Input",
-            "class": "pallo\\library\\cli\\input\\PhpInput",
+            "interfaces": "ride\\library\\cli\\input\\Input",
+            "class": "ride\\library\\cli\\input\\PhpInput",
             "id": "php"
         },
         {
-            "interfaces": "pallo\\library\\cli\\input\\Input",
-            "class": "pallo\\library\\cli\\input\\ReadlineInput",
+            "interfaces": "ride\\library\\cli\\input\\Input",
+            "class": "ride\\library\\cli\\input\\ReadlineInput",
             "id": "readline"
         },
         {
-            "interfaces": "pallo\\library\\cli\\output\\Output",
-            "class": "pallo\\library\\cli\\output\\PhpOutput",
+            "interfaces": "ride\\library\\cli\\output\\Output",
+            "class": "ride\\library\\cli\\output\\PhpOutput",
             "id": "php"
         },
         {
-            "class": "pallo\\library\\cli\\Cli",
+            "class": "ride\\library\\cli\\Cli",
             "id": "cli",
             "calls": [
                 {
@@ -97,8 +97,8 @@
             ]
         },
         {
-            "interfaces": "pallo\\library\\log\\listener\\LogListener",
-            "class": "pallo\\library\\log\\listener\\EchoLogListener",
+            "interfaces": "ride\\library\\log\\listener\\LogListener",
+            "class": "ride\\library\\log\\listener\\EchoLogListener",
             "id": "echo",
             "calls": [
                 {
@@ -120,7 +120,7 @@
                             "name": "logMessageDecorator",
                             "type": "dependency",
                             "properties": {
-                                "interface": "pallo\\library\\decorator\\Decorator",
+                                "interface": "ride\\library\\decorator\\Decorator",
                                 "id": "log.message"
                             }
                         }
@@ -129,8 +129,8 @@
             ]
         },
         {
-            "interfaces": "pallo\\application\\Application",
-            "class": "pallo\\cli\\CliApplication",
+            "interfaces": "ride\\application\\Application",
+            "class": "ride\\cli\\CliApplication",
             "id": "cli"
         }
     ]

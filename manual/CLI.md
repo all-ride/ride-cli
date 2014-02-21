@@ -21,7 +21,7 @@ You can add a command by defining a dependency in _config/dependencies.json_:
     {
         "dependencies": [
             {
-                "interfaces": "pallo\\library\\cli\\command\\Command",
+                "interfaces": "ride\\library\\cli\\command\\Command",
                 "class": "vendor\\app\\command\\HelloCommand"
             }
         ]
@@ -35,7 +35,7 @@ The following sample command takes a name as optional argument and prints it out
     
     namespace vendor\app\command;
     
-    use pallo\library\cli\command\AbstractCommand;
+    use ride\library\cli\command\AbstractCommand;
 
     class HelloCommand extends AbstractCommand {
     
@@ -67,8 +67,8 @@ To add the auto completion to your command, you simply implement the AutoComplet
     
     namespace vendor\app\command;
 
-    use pallo\library\cli\command\AbstractCommand;
-    use pallo\library\cli\input\AutoCompletable;
+    use ride\library\cli\command\AbstractCommand;
+    use ride\library\cli\input\AutoCompletable;
 
     class HelloCommand extends AbstractCommand implements AutoCompletable {
     
