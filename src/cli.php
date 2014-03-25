@@ -20,6 +20,7 @@ try {
 
     // service the cli
     $system = new ride\application\system\System($parameters);
+    $system->setTimeZone();
     $system->service('cli');
 
     exit(0);
