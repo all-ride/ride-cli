@@ -15,19 +15,19 @@ abstract class AbstractConfigCommand extends AbstractCommand implements AutoComp
 
     /**
      * Instance of the config
-     * @var ride\library\config\Config
+     * @var \ride\library\config\Config
      */
     protected $config;
 
     /**
      * Instance of the config helper
-     * @var ride\library\config\ConfigHelper
+     * @var \ride\library\config\ConfigHelper
      */
     protected $configHelper;
 
     /**
      * Sets the instance of the config
-     * @param ride\library\config\Config $config
+     * @param \ride\library\config\Config $config
      * @return null
      */
     public function setConfig(Config $config) {
@@ -36,7 +36,7 @@ abstract class AbstractConfigCommand extends AbstractCommand implements AutoComp
 
     /**
      * Sets the instance of the config helper
-     * @param ride\library\config\ConfigHelper $configHelper
+     * @param \ride\library\config\ConfigHelper $configHelper
      * @return null
      */
     public function setConfigHelper(ConfigHelper $configHelper) {
@@ -74,7 +74,7 @@ abstract class AbstractConfigCommand extends AbstractCommand implements AutoComp
     /**
      * Checks if the instance of Config and ConfigHelper are set
      * @return null
-     * @throws ride\library\cli\exception\CliException when the config or the
+     * @throws \ride\library\cli\exception\CliException when the config or the
      * config helper are not set
      */
     protected function validateInstance() {
