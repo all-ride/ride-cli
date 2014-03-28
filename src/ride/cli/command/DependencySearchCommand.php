@@ -12,7 +12,7 @@ class DependencySearchCommand extends AbstractCommand {
 
     /**
      * Instance of the dependency injector
-     * @var ride\library\dependency\DependencyInjector
+     * @var \ride\library\dependency\DependencyInjector
      */
     protected $dependencyInjector;
 

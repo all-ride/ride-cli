@@ -18,20 +18,20 @@ class CliApplication implements Application {
 
     /**
      * Instance of the CLI
-     * @var ride\library\cli\Cli
+     * @var \ride\library\cli\Cli
      */
     protected $cli;
 
     /**
      * Instance of the system
-     * @var ride\app\system\System
+     * @var \ride\library\system\System
      */
     protected $system;
 
     /**
      * Constructs a new CLI application
-     * @param ride\app\system\System $system
-     * @param ride\library\cli\Cli $cli
+     * @param \ride\library\system\System $system
+     * @param \ride\library\cli\Cli $cli
      * @return null
      */
     public function __construct(System $system, Cli $cli) {
@@ -155,7 +155,7 @@ class CliApplication implements Application {
 
     /**
      * Writes the system name and environment to the provided output
-     * @param ride\library\cli\output\Output $output
+     * @param \ride\library\cli\output\Output $output
      * @return null
      */
     protected function writeSystemHeader(Output $output) {

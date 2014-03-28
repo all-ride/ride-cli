@@ -12,13 +12,13 @@ class FileSearchCommand extends AbstractCommand {
 
     /**
      * Instance of the file browser
-     * @var ride\library\system\file\browser\FileBrowser
+     * @var \ride\library\system\file\browser\FileBrowser
      */
     protected $fileBrowser;
 
     /**
      * Constructs a new file search command
-     * @param ride\library\system\file\browser\FileBrowser $fileBrowser
+     * @param \ride\library\system\file\browser\FileBrowser $fileBrowser
      * @return null
      */
     public function __construct(FileBrowser $fileBrowser) {
