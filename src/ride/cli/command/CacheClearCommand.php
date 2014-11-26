@@ -24,6 +24,7 @@ class CacheClearCommand extends AbstractCommand {
         parent::__construct('cache clear', 'Clears the cache');
 
         $this->addArgument('name', 'Name of the cache to clear', false);
+        $this->addFlag('skip', 'Name of the caches, separated by a comma, to skip when clearing');
 
         $this->dependencyInjector = $dependencyInjector;
     }
@@ -38,11 +39,20 @@ class CacheClearCommand extends AbstractCommand {
         if ($name) {
             $control = $this->dependencyInjector->get('ride\\application\\cache\\control\\CacheControl', $name);
             $control->clear();
-        } else {
-            $controls = $this->dependencyInjector->getAll('ride\\application\\cache\\control\\CacheControl');
-            foreach ($controls as $control) {
-                $control->clear();
+
+            return;
+        }
+
+        $skip = $this->input->getFlag('skip');
+        $skip = explode(',', $skip);
+
+        $controls = $this->dependencyInjector->getAll('ride\\application\\cache\\control\\CacheControl');
+        foreach ($controls as $name => $control) {
+            if (in_array($name, $skip)) {
+                continue;
             }
+
+            $control->clear();
         }
     }
 
