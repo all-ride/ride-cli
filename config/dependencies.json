@@ -1,58 +1,58 @@
 {
     "dependencies": [
         {
-            "interfaces": "ride\\library\\cli\\command\\Command",
-            "class": "ride\\cli\\command\\CacheClearCommand", 
-            "id": "cache.clear"
-        },
-        {
-            "interfaces": "ride\\library\\cli\\command\\Command",
-            "class": "ride\\cli\\command\\CacheCommand", 
-            "id": "cache"
-        },
-        {
-            "interfaces": "ride\\library\\cli\\command\\Command",
-            "class": "ride\\cli\\command\\CacheDisableCommand", 
-            "id": "cache.disable"
-        },
-        {
-            "interfaces": "ride\\library\\cli\\command\\Command",
-            "class": "ride\\cli\\command\\CacheEnableCommand", 
-            "id": "cache.enable"
-        },
-        {
-            "interfaces": "ride\\library\\cli\\command\\Command",
-            "class": "ride\\cli\\command\\DependencySearchCommand", 
+            "interfaces": "ride\\cli\\command\\io\\CommandIO",
+            "class": "ride\\cli\\command\\io\\DependencyCommandIO",
             "id": "dependency"
         },
         {
-            "interfaces": "ride\\library\\cli\\command\\Command", 
-            "class": "ride\\cli\\command\\FileSearchCommand", 
-            "id": "file"
-        },
-        {
-            "interfaces": "ride\\library\\cli\\command\\Command",
-            "class": "ride\\cli\\command\\ParameterSearchCommand",
-            "id": "parameter",
-            "calls": ["setConfig", "setConfigHelper"]
-        },
-        {
-            "interfaces": "ride\\library\\cli\\command\\Command",
-            "class": "ride\\cli\\command\\ParameterGetCommand",
-            "id": "parameter.get",
-            "calls": ["setConfig", "setConfigHelper"]
-        },
-        {
-            "interfaces": "ride\\library\\cli\\command\\Command",
-            "class": "ride\\cli\\command\\ParameterSetCommand",
-            "id": "parameter.set",
-            "calls": ["setConfig", "setConfigHelper"]
-        },
-        {
-            "interfaces": "ride\\library\\cli\\command\\Command",
-            "class": "ride\\cli\\command\\ParameterUnsetCommand",
-            "id": "parameter.unset",
-            "calls": ["setConfig", "setConfigHelper"]
+            "interfaces": "ride\\cli\\command\\io\\CommandIO",
+            "class": "ride\\cli\\command\\io\\ParserCommandIO",
+            "id": "json",
+            "calls": [
+                {
+                    "method": "__construct",
+                    "arguments": [
+                        {
+                            "name": "parser",
+                            "type": "dependency",
+                            "properties": {
+                                "interface": "ride\\library\\config\\parser\\Parser",
+                                "id": "json"
+                            }
+                        },
+                        {
+                            "name": "path",
+                            "type": "parameter",
+                            "properties": {
+                                "key": "system.directory.config",
+                                "default": "config"
+                            }
+                        },
+                        {
+                            "name": "file",
+                            "type": "scalar",
+                            "properties": {
+                                "value": "commands.json"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "method": "setEnvironment",
+                    "arguments": [
+                        {
+                            "name": "environment",
+                            "type": "call",
+                            "properties": {
+                                "interface": "ride\\application\\system\\System",
+                                "method": "getEnvironment"
+                            }
+                        }
+                    ]
+                },
+                "setConfig"
+            ]
         },
         {
             "class": "ride\\library\\cli\\input\\ArgumentParser",
@@ -87,9 +87,10 @@
                     "arguments": [
                         {
                             "name": "enablePhpCommand",
-                            "type": "scalar",
+                            "type": "parameter",
                             "properties": {
-                                "value": 1
+                                "key": "cli.command.php",
+                                "default": false
                             }
                         }
                     ]

@@ -11,14 +11,14 @@
     ],
     "require": {
         "ride/app": ">=0.4.0",
-        "ride/lib-cli": ">=0.1.0",
+        "ride/lib-cli": ">=0.2.0",
         "ride/lib-config": ">=0.2.0",
         "ride/lib-dependency": ">=0.3.0",
         "ride/lib-system": ">=0.2.1"
-    }, 
+    },
     "autoload": {
         "psr-0": {
-            "ride\\cli\\": ["src/", "test/src/"]
+            "ride\\cli\\": ["src/"]
         }
     }
 }

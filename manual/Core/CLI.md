@@ -16,13 +16,23 @@ The interactive shell has tab auto completion and a input history.
 
 ## Add A Command
 
-You can add a command by defining a dependency in _config/dependencies.json_:
+You can add a command by defining one in _config/commands.json_, some examples:
 
     {
-        "dependencies": [
+        "commands": [
             {
-                "interfaces": "ride\\library\\cli\\command\\Command",
+                "name": "hello",
                 "class": "vendor\\app\\command\\HelloCommand"
+            },
+            {
+                "name": "foo",
+                "aliases": "f",
+                "class": "vendor\\app\\command\\HelloCommand"
+            },
+            {
+                "name": "very long command",
+                "aliases": ["c", "vlc"],
+                "class": "vendor\\app\\command\\HelloCommand#dependencyId"
             }
         ]
     } 
@@ -35,24 +45,44 @@ The following sample command takes a name as optional argument and prints it out
     
     namespace vendor\app\command;
     
-    use ride\library\cli\command\AbstractCommand;
+    use ride\cli\command\AbstractCommand;
 
     class HelloCommand extends AbstractCommand {
     
-        public function __construct() {
-            parent::__construct('hello', 'Say a greeting');
+        protected function initialize() {
+            $this->setDescription('Say a greeting');
             
-            $this->addArgument('name', 'Your name', true);
+            $this->addArgument('name', 'Your name', false);
         }
         
-        public function execute() {
-            $name = $this->input->getArgument('name', 'John Doe');
-
+        public function invoke($name = 'John Doe') {
             $this->output->writeLine('Hello ' . $name);
         }
     
     }
     
+Dependencies can be injected automatically.
+
+    <?php
+    
+    namespace vendor\app\command;
+    
+    use ride\application\system\System;
+    
+    use ride\cli\command\AbstractCommand;
+
+    class SystemNameCommand extends AbstractCommand {
+    
+        protected function initialize() {
+            $this->setDescription('Prints the system name');
+        }   
+        
+        public function invoke(System $system) {
+            $this->output->writeLine('I'm ' . $system->getName());
+        }
+    
+    }
+
 ### Add Autocompletion To Your Command
 
 The interactive shell has tab autocompletion builtin.
@@ -67,7 +97,8 @@ To add the auto completion to your command, you simply implement the AutoComplet
     
     namespace vendor\app\command;
 
-    use ride\library\cli\command\AbstractCommand;
+    use ride\cli\command\AbstractCommand;
+    
     use ride\library\cli\input\AutoCompletable;
 
     class HelloCommand extends AbstractCommand implements AutoCompletable {
