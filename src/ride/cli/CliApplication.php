@@ -54,9 +54,9 @@ class CliApplication implements Application {
         // load commands
         $commandContainer = $this->cli->getCommandInterpreter()->getCommandContainer();
 
-        $commands = $dependencyInjector->getAll('ride\\library\\cli\\command\\Command');
-        foreach ($commands as $command) {
-            $commandContainer->addCommand($command);
+        $commandIOs = $dependencyInjector->getAll('ride\\cli\\command\\io\\CommandIO');
+        foreach ($commandIOs as $commandIO) {
+            $commandIO->readCommands($commandContainer);
         }
 
         // remove the script from the arguments
@@ -110,7 +110,7 @@ class CliApplication implements Application {
             }
 
             // write the intro
-            $this->writeSystemHeader($output);
+            $this->writeSystemHeader($output, $script, false);
 
             $output->writeLine('Type \'help\' to get you started.');
         } else {
@@ -131,19 +131,7 @@ class CliApplication implements Application {
 
             // input from command arguments
             if (!$_SERVER['argv']) {
-                $this->writeSystemHeader($output);
-
-                $output->writeLine('');
-                $output->writeLine('Usage:');
-                $output->writeLine($script . ' [options] [<command>]');
-                $output->writeLine('');
-                $output->writeLine('Available options:');
-                $output->writeLine('- --batch  Use a non-interactive input.');
-                $output->writeLine('- --debug  Show the full stack trace of runtime exceptions.');
-                $output->writeLine('- --shell  Run as a (interactive) shell.');
-                $output->writeLine('');
-                $output->writeLine('If you are in a interactive shell, you can use tab for command auto completion and the up and down arrows for command history.');
-                $output->writeLine('');
+                $this->writeSystemHeader($output, $script, true);
             }
         }
 
@@ -158,15 +146,24 @@ class CliApplication implements Application {
      * @param \ride\library\cli\output\Output $output
      * @return null
      */
-    protected function writeSystemHeader(Output $output) {
-        $environment = $this->system->getEnvironment();
-        if ($environment != 'prod') {
-            $environment = ' (' . $environment . ')';
+    protected function writeSystemHeader(Output $output, $script = null, $full = false) {
+        $file = $this->system->getFileBrowser()->getFile('data/cli.txt');
+        if ($file) {
+            $intro = $file->read();
         } else {
-            $environment = '';
+            $intro = '%name% (%env%)';
         }
 
-        $output->writeLine($this->system->getName() . $environment);
+        $intro = str_replace('%name%', $this->system->getName(), $intro);
+        $intro = str_replace('%environment%', $this->system->getEnvironment(), $intro);
+        $intro = str_replace('%script%', $script, $intro);
+
+        if (!$full) {
+            $lines = explode("\n", $intro);
+            $intro = $lines[0] . "\n";
+        }
+
+        $output->writeLine($intro);
     }
 
 }

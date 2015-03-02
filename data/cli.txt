@@ -1,0 +1,12 @@
+%name% (%environment%)
+
+Usage:
+%script% [options] [<command>]
+
+Available options:
+- --batch  Use a non-interactive input.
+- --debug  Show the full stack trace of runtime exceptions.
+- --env    Run in the provided environment
+- --shell  Run as a (interactive) shell.
+
+If you are in a interactive shell, you can use tab for command auto completion and the up and down arrows for command history.

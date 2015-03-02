@@ -1,0 +1,1 @@
+cli.command.php           Flag to see if the php command is enabled in the CLI, defaults to false
