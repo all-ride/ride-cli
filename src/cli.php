@@ -4,7 +4,18 @@ $bootstrap = __DIR__ . '/../vendor/autoload.php';
 $parameters = __DIR__ . '/../application/config/parameters.php';
 
 try {
-    $isDebug = in_array('--debug', $_SERVER['argv']);
+    // parse global flags
+    $isDebug = false;
+    $env = null;
+    foreach ($_SERVER['argv'] as $index => $value) {
+        if ($value == '--debug') {
+            $isDebug = true;
+        } elseif (strpos($value, '--env=') === 0) {
+            unset($_SERVER['argv'][$index]);
+
+            $env = substr($value, 6);
+        }
+    }
 
     // include the bootstrap
     include_once $bootstrap;
@@ -16,6 +27,11 @@ try {
 
     if (!is_array($parameters)) {
         $parameters = null;
+    }
+
+    // override environment
+    if ($env) {
+        $parameters['environment'] = $env;
     }
 
     // service the cli
