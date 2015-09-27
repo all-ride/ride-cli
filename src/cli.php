@@ -1,9 +1,8 @@
 <?php
 
-$bootstrap = __DIR__ . '/../vendor/autoload.php';
-$parameters = __DIR__ . '/../application/config/parameters.php';
-
 try {
+    include_once __DIR__ . '/src/bootstrap.php';
+
     // parse global flags
     $isDebug = false;
     $env = null;
@@ -15,18 +14,6 @@ try {
 
             $env = substr($value, 6);
         }
-    }
-
-    // include the bootstrap
-    include_once $bootstrap;
-
-    // read the parameters
-    if (file_exists($parameters)) {
-        include_once $parameters;
-    }
-
-    if (!is_array($parameters)) {
-        $parameters = null;
     }
 
     // override environment
@@ -54,7 +41,7 @@ try {
             }
         } while ($exception);
     } else {
-        $output = "Fatal error: " . $exception->getMessage() . "\n";
+        $output = "Fatal error: " . get_class($exception) . ': ' . $exception->getMessage() . "\n";
     }
 
     if (defined('STDERR')) {

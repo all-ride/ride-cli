@@ -83,6 +83,9 @@ Dependencies can be injected automatically.
     
     }
 
+If you need specific dependencies, you can add setters for those.
+Define your command in _dependencies.json_ with the tag _exclude_ to make sure your command is not picked up by the dependency command container.
+
 ### Add Autocompletion To Your Command
 
 The interactive shell has tab autocompletion builtin.
