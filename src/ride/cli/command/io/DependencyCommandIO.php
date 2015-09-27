@@ -31,7 +31,7 @@ class DependencyCommandIO implements CommandIO {
      * @return null
      */
     public function readCommands(CommandContainer $commandContainer) {
-        $commands = $this->dependencyInjector->getAll('ride\\library\\cli\\command\\Command');
+        $commands = $this->dependencyInjector->getByTag('ride\\library\\cli\\command\\Command', null, 'exclude');
         foreach ($commands as $command) {
             $commandContainer->addCommand($command);
         }
